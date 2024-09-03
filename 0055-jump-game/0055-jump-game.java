@@ -11,7 +11,6 @@ class Solution {
             }
         }
 
-        System.out.println(flag);
         if (flag==0) return true;
         else return false;
     }
