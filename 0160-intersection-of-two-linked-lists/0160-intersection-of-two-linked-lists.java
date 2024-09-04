@@ -11,19 +11,19 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        
-        ListNode pointerA = headA;
-        ListNode pointerB = headB;
 
-        //Bruteforce
-        while (pointerA != null){
+        Set<ListNode> set = new HashSet<>();
 
-            while (pointerB != null){
-                if (pointerA == pointerB) return pointerA;
-                pointerB = pointerB.next;
-            }
-            pointerA = pointerA.next;
-            pointerB = headB;
+        //add all node addresses of LinkedList A
+        while (headA != null){
+            set.add(headA);
+            headA = headA.next;
+        }
+
+        //check addresses with headB addresses
+        while (headB != null){
+            if (!set.add(headB)) return headB;
+            headB = headB.next;
         }
 
         return null;
