@@ -19,7 +19,6 @@ class Solution {
         String s1 = dfs(p, "");
         String s2 = dfs(q, "");
 
-        System.out.println(s1);
         if (s1.equals(s2)) return true;
         else return false;
     }
