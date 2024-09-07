@@ -26,8 +26,7 @@ class Solution {
 
     String dfs(TreeNode node, String s){
         if (node == null){
-            s= s+ "null";
-            return s;
+            return s+"null";
         }
 
         s = s + node.val;
