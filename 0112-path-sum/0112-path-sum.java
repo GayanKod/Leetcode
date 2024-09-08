@@ -17,26 +17,27 @@ class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         
         if (root == null) return false;
-        if (root.left == null && root.right == null){
-            if (root.val == targetSum) return true;
-            else return false;
-        }
-        int sum = 0;
-        int depth =0;
 
-        return dfs(root, sum, targetSum, depth);
+        int sum = 0;
+
+        return dfs(root, sum, targetSum);
         
     }
 
-    boolean dfs (TreeNode root, int sum, int targetSum, int depth){
+    boolean dfs (TreeNode root, int sum, int targetSum){
 
         if (root != null){
             sum += root.val;
-            depth++;
-            return dfs(root.left, sum, targetSum, depth) || dfs(root.right, sum, targetSum, depth);
+
+            if (root.left == null && root.right == null){
+                System.out.println(sum);
+                if (sum == targetSum)return true;
+                else return false;
+            }
+
+            return dfs(root.left, sum, targetSum) || dfs(root.right, sum, targetSum);
         }else{
-            if (sum == targetSum && depth > 1) return true;
-            else return false;
+            return false;
         }
 
     }
